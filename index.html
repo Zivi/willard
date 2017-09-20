@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="wizardApp">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+    <title>The greatest tip calculator</title>
+  </head>
+  <body ng-controller="TipController">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <h1>Tip Calculator</h1>
+    <h2 class="subtitle">
+      Despite what some retirees in Florida claimed in the 90s, the Willard is the greatest, more reliable, tip calculator on Earth!
+    </h2>
+    <div>How much was your check?</div>
+    <input class="user-input"
+      type="number"
+      ng-model="input.value"
+      ng-keypress="amount"
+      ng-init="amount=0"
+      >
+
+    <div  class="prefixed-tips">
+      <div class="prefixed-tip-display" ng-repeat="amount in input.tipAmounts">
+        <div>{{amount}}% tip</div>
+        <div>${{input.value * (1 + amount * 0.01) | number: 2}}</div>
+      </div>
+    </div>
+
+
+    <div>Custom tip amount</div>
+    <input class="user-input"
+      type="number"
+      ng-model="input.default"
+      ng-keypress="tip-amount"
+    >
+    <div>{{input.value *  (1 + (input.default * 0.01)) | number: 2}}</div>
+
+    <iframe width="200" height="150" src="https://www.youtube.com/embed/HrzhqXGcm68" frameborder="0" allowfullscreen></iframe>
+  </body>
+</html>

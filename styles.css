@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.user-input {
+  width: 50px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
+.prefixed-tips {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.prefixed-tip-display {
+  padding: 10px;
+  text-align: left;
+}
