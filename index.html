@@ -12,32 +12,33 @@
 
     <h1>Tip Calculator</h1>
     <h2 class="subtitle">
-      Despite what some retirees in Florida claimed in the 90s, the Willard is the greatest, more reliable, tip calculator on Earth!
+      Despite what some retirees in Florida claimed in the 90s, the Willard is the greatest, most reliable, tip calculator in Del Boca Vista!
     </h2>
     <div>How much was your check?</div>
     <input class="user-input"
       type="number"
-      ng-model="input.value"
-      ng-keypress="amount"
-      ng-init="amount=0"
+      min="0"
+      ng-model="input.checkValue"
       >
+    <button class="clear-button" ng-click="resetTotal()">Clear</button>
 
     <div  class="prefixed-tips">
       <div class="prefixed-tip-display" ng-repeat="amount in input.tipAmounts">
         <div>{{amount}}% tip</div>
-        <div>${{input.value * (1 + amount * 0.01) | number: 2}}</div>
+        <div>${{input.checkValue * (1 + amount * 0.01) | number: 2}}</div>
       </div>
     </div>
 
 
-    <div>Custom tip amount</div>
+    <div>Custom tip amount</div> <!-- append percent to the amount -->
     <input class="user-input"
       type="number"
-      ng-model="input.default"
-      ng-keypress="tip-amount"
+      min="0"
+      ng-model="input.customTipValue"
     >
-    <div>{{input.value *  (1 + (input.default * 0.01)) | number: 2}}</div>
-
-    <iframe width="200" height="150" src="https://www.youtube.com/embed/HrzhqXGcm68" frameborder="0" allowfullscreen></iframe>
+    <div ng-show="input.customTipValue != 0">
+      Check total with {{input.customTipValue}}% tip: ${{input.checkValue *  (1 + (input.customTipValue * 0.01)) | number: 2}}
+    </div>
+    <button class="clear-button" ng-click="resetTip()">Clear</button>
   </body>
 </html>
